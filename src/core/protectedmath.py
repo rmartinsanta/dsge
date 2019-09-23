@@ -47,7 +47,7 @@ class Infix:
 _div_ = Infix(protdiv)
 
 if __name__=='__main__':
-    print 8 |_div_| 2
-    print 9.0 |_div_| 2
-    print 8 |_div_| 0
-    print 8 / 0
+    print(8 |_div_| 2)
+    print(9.0 |_div_| 2)
+    print(8 |_div_| 0)
+    print(8 / 0)

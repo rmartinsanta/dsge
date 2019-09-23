@@ -1,5 +1,5 @@
 import sys
-from rng_seeds import *
+from .rng_seeds import *
 
 
 POPULATION_SIZE = 1000

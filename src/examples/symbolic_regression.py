@@ -60,16 +60,16 @@ class SymbolicRegression():
             yy = list(drange(-5,5.4,.4))
 
             function = eval(self.function)
-            zz = map(function, xx, yy)
-            self.__train_set=zip(xx,yy,zz)
+            zz = list(map(function, xx, yy))
+            self.__train_set=list(zip(xx,yy,zz))
             self.training_set_size = len(self.__train_set)
             if self.has_test_set:
                 xx = list(drange(-5,5.0,.1))
                 yy = list(drange(-5,5.0,.1))
                 function = eval(self.function)
-                zz = map(function, xx, yy)
+                zz = list(map(function, xx, yy))
 
-                self.__test_set = zip(xx,yy,zz)
+                self.__test_set = list(zip(xx,yy,zz))
                 self.test_set_size = len(self.__test_set)
         else:
             if self.function == "keijzer6":
@@ -79,8 +79,8 @@ class SymbolicRegression():
             else:
                 xx = list(drange(-1,1.1,.1))
             function = eval(self.function)
-            yy = map(function,xx)
-            self.__train_set = zip(xx,yy)
+            yy = list(map(function,xx))
+            self.__train_set = list(zip(xx,yy))
             self.__number_of_variables = 1
             self.training_set_size = len(self.__train_set)
             if self.has_test_set:
@@ -88,8 +88,8 @@ class SymbolicRegression():
                     xx = list(drange(51,121,1))
                 elif self.function == "keijzer9":
                     xx = list(drange(0,101,.1))
-                yy = map(function,xx)
-                self.__test_set = zip(xx,yy)
+                yy = list(map(function,xx))
+                self.__test_set = list(zip(xx,yy))
                 self.test_set_size = len(self.__test_set)
                 #print self.__train_set
                 #print self.__test_set

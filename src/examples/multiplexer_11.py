@@ -39,7 +39,7 @@ for i in range(2 ** MUX_TOTAL_LINES):
         indexOutput += k * 2**j
     outputs[i] = inputs[i][indexOutput]
 
-    to_evaluate = [dict(zip(input_names, i)) for i in inputs]
+    to_evaluate = [dict(list(zip(input_names, i))) for i in inputs]
          
 
 class Multiplexer_11:
@@ -51,7 +51,7 @@ class Multiplexer_11:
         error = len(inputs)
         program = compile("res = " + individual, '<string>', 'exec')
         for i, variables in enumerate(to_evaluate):
-            exec program in variables
+            exec(program, variables)
             res = variables['res']
             if res == outputs[i]:
                 error -= 1

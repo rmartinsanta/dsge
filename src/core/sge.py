@@ -14,7 +14,7 @@ def generate_sge_individual():
 
 model = {
             'generate': generate_sge_individual,
-            'mutate': lambda current_gene, max_gene: random.choice([i for i in xrange(max_gene)])
+            'mutate': lambda current_gene, max_gene: random.choice([i for i in range(max_gene)])
 }
 
 def generate_random_individual():
@@ -47,7 +47,7 @@ def choose_indiv(population):
 
 def crossover(p1, p2):
     xover_p_value = 0.5
-    mask = [random.random() for i in xrange(GRAMMAR.count_number_of_non_terminals())]
+    mask = [random.random() for i in range(GRAMMAR.count_number_of_non_terminals())]
     genotype = []
     gen_size = len(p1['genotype'])
     mapping_values = []
@@ -72,7 +72,7 @@ def mutate(p):
         nt = list(GRAMMAR.get_non_terminals())[at_gene]
         temp = p['mapping_values']
         mapped = temp[at_gene]
-        for position_to_mutate in xrange(0, mapped):
+        for position_to_mutate in range(0, mapped):
             #print PROB_MUTATION(mapped)
             if random.random() < PROB_MUTATION(mapped):
                 #print "Mutate"
@@ -85,10 +85,10 @@ def mutate(p):
                     #print nt
                     choices = GRAMMAR.non_recursive_options[nt]
                 else:
-                    choices = range(0, size_of_genes[nt])
+                    choices = list(range(0, size_of_genes[nt]))
                     choices.remove(current_value)
                 if len(choices) == 0:
-                    choices = range(0, size_of_genes[nt])
+                    choices = list(range(0, size_of_genes[nt]))
                 p['genotype'][at_gene][position_to_mutate] = random.choice(choices)
     return p
 
@@ -102,7 +102,7 @@ def save(population, it, experience_name):
     app = to_save.append
     for ind in population:
         cp_ind = {}
-        for key, value in ind.iteritems():
+        for key, value in ind.items():
             if key != 'genotype':
                 cp_ind[key] = value
         app(cp_ind)
@@ -138,7 +138,7 @@ def evolutionary_algorithm(grammar = "", exp_name = "", eval_func = ""):
             stats = "" + str(it) + "," + str(best['fitness']) + "," + str((float(sum([ind['fitness'] for ind in population])) / float(POPULATION_SIZE))) + "," + str(best['tree_depth']) + "," + str(best['other_info']['test_error'])
         else:
             stats = "" + str(it) + "," + str(best['fitness']) + "," + str((float(sum([ind['fitness'] for ind in population])) / float(POPULATION_SIZE))) + "," + str(best['tree_depth'])
-        print stats#, best['phenotype']
+        print(stats)#, best['phenotype']
         progress_report += stats + "\n"
 
         if it in sampling_snap:

@@ -47,7 +47,7 @@ class BostonHousing():
             for i in range(self.__run - 1): folds_file.readline()
             test_indexes = folds_file.readline()
             test_indexes = [int(value.strip(" ")) - 1 for value in test_indexes.split(" ") if value != ""]
-            training_indexes = filter(lambda x: x not in test_indexes, range(len(dataset))) #Not the most efficient way
+            training_indexes = [x for x in range(len(dataset)) if x not in test_indexes] #Not the most efficient way
         self.__train_set = [dataset[i] for i in training_indexes]
         self.__test_set = [dataset[i] for i in test_indexes]
 

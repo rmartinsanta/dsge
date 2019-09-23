@@ -239,4 +239,4 @@ if __name__ == "__main__":
     genome = [[[0]], [[2]], [[]], [[]], [[1]]]
     mapping_numbers = [0] * len(genome)
     #print g.mapping(genome, mapping_numbers)
-    print g.old_mapping(genome, mapping_numbers)
+    print(g.old_mapping(genome, mapping_numbers))

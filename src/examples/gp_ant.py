@@ -146,7 +146,8 @@ class AntSimulator:
             try:
                 self.routine()
             except SyntaxError:
-                print "SYNTAX ERROR:\n"+routine
+                # TODO double check: routine is not passed as a parameter, probably a bug
+                print("SYNTAX ERROR:\n"+routine)
                 exit(0)
 
 
@@ -165,7 +166,7 @@ class AntSimulator:
                 if last == self.moves:
                     self.moves+=1
             except SyntaxError:
-                print "SYNTAX ERROR:\n"+routine
+                print("SYNTAX ERROR:\n"+routine)
                 exit(0)
 
 
